@@ -1,0 +1,9 @@
+.venv/
+
+/env
+
+SECRET_KEY = "c63fd3ce047191793f55cdce44f26248"
+DB_USER = "9_6_FA"
+DB_PASSWORD = "LinuxWarsaw_!"
+DB_HOST = "http://learningcomputerscience.com/"
+DB_NAME = "ASW remote server"
