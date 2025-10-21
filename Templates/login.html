@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </head>
 <body>
     <h1>Login</h1>
-    <p>If you see this, your Flask app is successfully serving HTML.</p>
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text">
+    </form>
 </body>
 </html>
 

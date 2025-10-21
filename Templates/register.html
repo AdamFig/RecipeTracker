@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-    <h1>Register</h1>
-    <p>If you see this, your Flask app is successfully serving HTML.</p>
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+    <h1>Register</h1> <br>
+    <form method="POST" action="/register">
+        <label for="name">First name:</label>
+        <input type="text" id="name" background-color: #00478f;><br>
+        <label for="email" >Email:</label>
+        <input type="email" id="email"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password"><br>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password"><br>
+        <input type="submit" value="Register" class="bg-indigo-500 px-4 py-2 rounded">
+    </form>
 </body>
-</html>
+
+{% endblock %}
 
 
 
