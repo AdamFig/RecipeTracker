@@ -1,7 +1,7 @@
 import os
 os.system("clear") 
 
-from flask import current_app as app, Blueprint, Flask, render_template, request, redirect, url_for, session
+from flask import current_app as app, g, Blueprint, Flask, render_template, request, redirect, url_for, session
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
 import mysql.connector
@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv
+
 routes = Blueprint('routes', __name__)
 bcrypt = Bcrypt()
 login_manager = LoginManager()
@@ -20,6 +21,23 @@ def db_connect():
         password=os.getenv("DB_PASSWORD"),
         database=os.getenv("DB_NAME")
     )
+
+# Initialization of app
+
+def init_routes(app):
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    login_manager.login_view = 'routes.login' 
+    app.register_blueprint(routes)
+
+    @app.before_request
+    def load_logged_in_user():
+        if current_user.is_authenticated:
+            g.user = current_user
+        else:
+            g.user = None
+
+# ^^^ Initialization of app ^^^
 
 class User(UserMixin):
     def __init__(self, user_id, email):
@@ -52,9 +70,9 @@ def login():
     if request.method == 'POST':
         return "Login POST received"
     return render_template("login.html")
-        
-def init_routes(app):
-    bcrypt.init_app(app)
-    login_manager.init_app(app)
-    login_manager.login_view = 'routes.login' 
-    app.register_blueprint(routes)
+            
+
+@routes.route('/logout', methods=['POST'])
+def logout():
+    logout_user()
+    return render_template("login.html")  
