@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+body {
+    background-color: #0064c8;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    font-size: xx-large
+}
+
+input {
+    background-color: #a3b3c5;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    margin-top: 50px;
+    font-size: xx-large;
+    padding-left: 100px;
+}
+
