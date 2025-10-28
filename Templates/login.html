@@ -1,20 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
-</head>
-<body>
-    <h1>Login</h1>
-    <form>
-        <label for="fname">First name:</label><br>
-        <input type="text">
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div>
+  <div class="flex min-h-screen flex-col items-center pt-6 sm:justify-center sm:pt-0">
+    <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg overflow-hidden w-full p-8 sm:max-w-md">
+      <div class="flex items-center justify-center">
+        <a href="#">
+          <div class="flex items-center justify-center h-20 w-20 overflow-hidden rounded-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700">
+            <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M24.5 12.75C24.5 18.9632 19.4632 24 13.25 24H2V12.75C2 6.53679 7.03679 1.5 13.25 1.5C19.4632 1.5 24.5 6.53679 24.5 12.75Z" class="ccustom" fill="#17CF97"></path> <path d="M24.5 35.25C24.5 29.0368 29.5368 24 35.75 24H47V35.25C47 41.4632 41.9632 46.5 35.75 46.5C29.5368 46.5 24.5 41.4632 24.5 35.25Z" class="ccustom" fill="#17CF97"></path> <path d="M2 35.25C2 41.4632 7.03679 46.5 13.25 46.5H24.5V35.25C24.5 29.0368 19.4632 24 13.25 24C7.03679 24 2 29.0368 2 35.25Z" class="ccustom" fill="#17CF97"></path> <path d="M47 12.75C47 6.53679 41.9632 1.5 35.75 1.5H24.5V12.75C24.5 18.9632 29.5368 24 35.75 24C41.9632 24 47 18.9632 47 12.75Z" class="ccustom" fill="#17CF97"></path> </svg>
+          </div>
+        </a>
+      </div>
+
+      <form class="mt-4" method="POST" action="/login">
+        <input type="hidden" name="_token" value="GhpGn48rFRsMAQKf8HQEOWZsRb9F8VJQwwAQs6Ck" />
+        <div>
+          <label class="block text-sm font-medium text-gray-800 dark:text-gray-400" for="email"> Email </label>
+
+          <input class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" id="email" type="email" name="email" placeholder="Your email address" required="required" autofocus="autofocus" />
+        </div>
+
+        <div class="mt-4">
+          <label class="block text-sm font-medium text-gray-800 dark:text-gray-400" for="password"> Password </label>
+
+          <input class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" id="password" type="password" name="password" placeholder="Your password" required="required" autocomplete="current-password" />
+        </div>
+
+        <div class="mt-4 block">
+          <label for="remember_me" class="inline-flex items-center">
+            <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-700 border-gray-400 dark:border-gray-800 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="remember" />
+            <span class="ml-2 text-sm text-gray-800 dark:text-gray-400">Remember me</span>
+          </label>
+        </div>
+
+        <div class="mt-4 flex items-center justify-end">
+          <button type="submit" class="inline-flex items-center p-2 rounded-lg text-gray-800 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-800 text-xs font-bold ml-3">Log in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
 
 
 
