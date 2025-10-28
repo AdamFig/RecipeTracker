@@ -60,10 +60,6 @@ login_manager = LoginManager()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# @app.route('/')
-# def home():
-#     return render_template("home.html")
-
 bcrypt.init_app(app)
 
 login_manager.init_app(app)
