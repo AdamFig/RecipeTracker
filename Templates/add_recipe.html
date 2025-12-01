@@ -2,31 +2,90 @@
 {% block title %}Add Recipe{% endblock %}
 {% block content %}
 
-<div class="max-w-lg mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
-  <h1 class="text-2xl font-bold mb-6">Add a New Recipe</h1>
-  <form method="POST">
-    <label class="block mb-4">
-      <span class="text-gray-700">Title</span>
-      <input type="text" name="title" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required />
-    </label>
+{% if error %}
+<p class="text-red-500 text-large mb-3">{{ error }}</p>
+{% endif %}
 
-    <label class="block mb-4">
-      <span class="text-gray-700">Image URL</span>
-      <input type="url" name="image_url" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-    </label>
+<div class="items-center">
+  <div class="flex min-h-screen flex-wrap -mx-3 items-center pt-6 sm:justify-center sm:pt-0">
+    <div class="w-full overflow-hidden bg-white p-8 shadow-sm dark:bg-gray-800 sm:max-w-5xl sm:rounded-lg mx-8 items-center">
+      <div class="flex items-center justify-center pb-8">
+        <a href="#">
+          <div class="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16"><g fill="none"><path fill="url(#SVGssch9dWC)" d="M1 2.75A.75.75 0 0 1 1.75 2h10.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75"/><path fill="url(#SVGt5Akjb7s)" fill-opacity="0.75" d="M1 2.75A.75.75 0 0 1 1.75 2h10.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75"/><path fill="url(#SVGssch9dWC)" d="M1 5.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 1 5.25"/><path fill="url(#SVGt5Akjb7s)" fill-opacity="0.75" d="M1 5.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 1 5.25"/><path fill="url(#SVGssch9dWC)" d="M1 7.75A.75.75 0 0 1 1.75 7h5.5a.75.75 0 0 1 0 1.5h-5.5A.75.75 0 0 1 1 7.75"/><path fill="url(#SVGt5Akjb7s)" fill-opacity="0.75" d="M1 7.75A.75.75 0 0 1 1.75 7h5.5a.75.75 0 0 1 0 1.5h-5.5A.75.75 0 0 1 1 7.75"/><path fill="url(#SVGyN3YHelB)" d="M2.657 9.635L9.75 2.543l3.707 3.707l-7.093 7.092l-2.267-1.439z"/><path fill="url(#SVGoyxL9dQo)" d="m2.964 9.328l-.307.307a2.95 2.95 0 0 0-.772 1.355l-.87 3.385a.5.5 0 0 0 .61.609l3.385-.869c.512-.132.98-.398 1.354-.773l.307-.307s-1.285-.3-2.345-1.36s-1.362-2.347-1.362-2.347"/><path fill="url(#SVGLQXLKdyZ)" d="M10.529 1.764a2.621 2.621 0 1 1 3.707 3.707l-1.908 1.908L8.621 3.67z"/><path fill="url(#SVGtQerBdXh)" d="M8.266 4.026s.295 1.291 1.356 2.352a5.4 5.4 0 0 0 2.351 1.356L13.4 6.308s-1.29-.298-2.35-1.358A5.4 5.4 0 0 1 9.692 2.6z"/><defs><linearGradient id="SVGssch9dWC" x1="-.8" x2="2.543" y1="1.071" y2="11.475" gradientUnits="userSpaceOnUse"><stop stop-color="#36dff1"/><stop offset="1" stop-color="#0094f0"/></linearGradient><linearGradient id="SVGyN3YHelB" x1="8.631" x2="10.281" y1="5.563" y2="10.095" gradientUnits="userSpaceOnUse"><stop stop-color="#ffa43d"/><stop offset="1" stop-color="#fb5937"/></linearGradient><linearGradient id="SVGoyxL9dQo" x1=".187" x2="4.275" y1="10.908" y2="14.972" gradientUnits="userSpaceOnUse"><stop offset=".255" stop-color="#ffd394"/><stop offset="1" stop-color="#ff921f"/></linearGradient><linearGradient id="SVGLQXLKdyZ" x1="13.669" x2="11.316" y1="2.324" y2="4.537" gradientUnits="userSpaceOnUse"><stop stop-color="#f97dbd"/><stop offset="1" stop-color="#dd3ce2"/></linearGradient><linearGradient id="SVGtQerBdXh" x1="10.921" x2="7.295" y1="6.114" y2="4.528" gradientUnits="userSpaceOnUse"><stop stop-color="#ff921f"/><stop offset="1" stop-color="#ffe994"/></linearGradient><radialGradient id="SVGt5Akjb7s" cx="0" cy="0" r="1" gradientTransform="rotate(137.996 2.141 6.164)scale(11.5347 4.93393)" gradientUnits="userSpaceOnUse"><stop stop-color="#4a43cb"/><stop offset="1" stop-color="#4a43cb" stop-opacity="0"/></radialGradient></defs></g></svg>          </div>
 
-    <label class="block mb-4">
-      <span class="text-gray-700">Description</span>
-      <textarea name="description" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
-    </label>
+    </a>
+      </div>
 
-    <label class="block mb-6">
-      <span class="text-gray-700">Cooking Time</span>
-      <input type="text" name="cooking_time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-    </label>
 
-    <button type="submit" class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600">Add Recipe</button>
-  </form>
+      <form method="POST" action="/add_recipe">
+        <input type="hidden" title="_token" value="GhpGn48rFRsMAQKf8HQEOWZsRb9F8VJQwwAQs6Ck" />
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="title" id="title" title="title"> Title </label>
+
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="title" id="title" type="text" title="title" placeholder="Recipe title" required="required" autofocus="autofocus"></textarea>
+          </div>
+
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="image_url" type="image_url" title="image_url"> Image URL </label>
+
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="image_url" id="image_url" type="image_url" title="image_url" placeholder="Image URL" required="required"></textarea>
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="instructions" id="instructions" title="instructions"> Instructions </label>
+
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="instructions" id="instructions" title="instructions" placeholder="instructions required (i.e. 1. 2. 3.)" required="required"></textarea>
+          </div>
+
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="description" id="description" title="description"> Description </label>
+
+              <textarea class="field-sizing-fixed inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="description" id="description" title="description" placeholder="Additional Description" required="required"></textarea>
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="cooking_time" id="cooking_time" title="cooking_time"> Cooking Time (Hr:Min)</label>
+            <input class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="cooking_time" id="cooking_time" type="time" title="cooking_time" placeholder="Hours:Minutes (i.e. 02:25)" required="required">
+          </div>
+          
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="required_ingredients" id="required_ingredients" title="required_ingredients"> Required Ingredients </label>
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="required_ingredients" id="required_ingredients" title="required_ingredients" placeholder="Required Ingredients to make meal" required="required"></textarea>
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="servings" id="servings" title="servings"> Servings</label>
+            <input class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="servings" id="servings" type="number" title="servings" placeholder="How many people is this for" required="required">
+          </div>
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="rating" id="rating" title="rating"> Rating (1-5)  </label>
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="rating" id="rating" type="rating" title="rating" placeholder="1-5" required="required"></textarea>
+          </div>
+          <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400" for="difficulty" id="difficulty" title="difficulty"> Difficulty (1-5)  </label>
+            <textarea class="inline-block w-full py-2 rounded-md dark:text-gray-400 bg-gray-100 dark:bg-gray-900 border-transparent dark:border-gray-700 dark:hover:border-gray-700 dark:hover:focus:border-gray-700 focus:border-gray-300 hover:focus:border-gray-700 hover:border-gray-300 hover:focus:border-gray-300 focus:ring-0 text-sm mt-1 block w-full" name="difficulty" id="difficulty" type="number" title="difficulty" placeholder="1 = Very Easy, 5 = Very Hard" required="required"></textarea>
+          </div>
+        </div>
+        
+            <input type="hidden" title="role" value="user">
+        <div class="mt-4 flex items-center justify-end">
+          <a class="text-sm text-gray-600 underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-blue-400" href="{{ url_for('routes.recipes')}}"> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32"><g fill="none"><path fill="url(#SVGsUsqiY3i)" d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14s14-6.268 14-14S23.732 2 16 2"/><path fill="url(#SVGute79DuT)" d="M21.707 10.293a1 1 0 0 1 0 1.414L17.414 16l4.293 4.293a1 1 0 0 1-1.414 1.414L16 17.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L14.586 16l-4.293-4.293a1 1 0 1 1 1.414-1.414L16 14.586l4.293-4.293a1 1 0 0 1 1.414 0"/><defs><linearGradient id="SVGsUsqiY3i" x1="6.375" x2="24.75" y1="3.75" y2="30.875" gradientUnits="userSpaceOnUse"><stop stop-color="#f83f54"/><stop offset="1" stop-color="#ca2134"/></linearGradient><linearGradient id="SVGute79DuT" x1="10.697" x2="16.945" y1="16.53" y2="23.028" gradientUnits="userSpaceOnUse"><stop stop-color="#fdfdfd"/><stop offset="1" stop-color="#fecbe6"/></linearGradient></defs></g></svg> </a>
+
+          <button type="submit"  class="ml-4 inline-flex items-center rounded-lg"> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32"><g fill="none"><path fill="url(#SVGFnVq5bNm)" d="M30 16c0 7.732-6.268 14-14 14S2 23.732 2 16S8.268 2 16 2s14 6.268 14 14"/><path fill="url(#SVGcpquMdXZ)" d="M22.707 12.707a1 1 0 0 0-1.414-1.414L14.5 18.086l-3.293-3.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0z"/><defs><linearGradient id="SVGFnVq5bNm" x1="3" x2="22.323" y1="7.25" y2="27.326" gradientUnits="userSpaceOnUse"><stop stop-color="#52d17c"/><stop offset="1" stop-color="#22918b"/></linearGradient><linearGradient id="SVGcpquMdXZ" x1="12.031" x2="14.162" y1="11.969" y2="22.66" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#e3ffd9"/></linearGradient></defs></g></svg></button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
+
+
 
 {% endblock %}

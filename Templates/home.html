@@ -2,7 +2,100 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="pt-20">
-  <h1 class="object-top">What recipes are you looking for today?</h1>
+<!-- <div class="flex items-center justify-center min-h-screen pt-20 pb-10">
+  <div class="bg-teal-200/80 p-10 rounded-3xl shadow-lg w-full max-w-4xl border border-gray-400">
+    <h1 class="text-4xl font-serif text-center mb-10 text-gray-900">What are you looking for today?</h1>
+    
+    <form action="/recommend" method="GET" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+         -->
+        <!-- Left Column: Ranges -->
+        <!-- <div class="space-y-8"> -->
+          <!-- Rating Range -->
+          <!-- <div class="text-center"> -->
+            <!-- <label class="block text-xl font-serif text-gray-800 mb-2">Rating Range</label> -->
+            <!-- <div class="flex justify-center space-x-4"> -->
+              <!-- <input type="number" name="rating_min" placeholder="Min" min="0" max="5" step="0.1" class="w-32 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+              <!-- <input type="number" name="rating_max" placeholder="Max" min="0" max="5" step="0.1" class="w-32 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+            <!-- </div> -->
+          <!-- </div>  -->
+
+          <!-- Date Range (Months since last made) -->
+           <!-- <div class="text-center"> -->
+            <!-- <label class="block text-xl font-serif text-gray-800 mb-2">Date Range (Months)</label> -->
+            <!-- <div class="flex justify-center space-x-4"> -->
+              <!-- <input type="number" name="months_min" placeholder="Min" min="0" class="w-32 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+              <!-- <input type="number" name="months_max" placeholder="Max" min="0" class="w-32 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div>  -->
+
+        <!-- Right Column: Tags -->
+        <!-- <div class="flex flex-col justify-center items-center">
+          <div class="w-full max-w-xs"> -->
+            <!-- <label for="tags" class="block text-xl font-serif text-gray-800 mb-2 text-center">Tags</label> -->
+            <!-- <select name="tag" id="tags" class="w-full p-3 rounded-lg bg-gray-300 border border-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-center"> -->
+              <!-- <option value="" disabled selected>Select a tag ▼</option>  -->
+              <!-- Ideally populated from backend -->
+              <!-- <option value="quick">Quick to make</option> -->
+              <!-- <option value="dinner">Dinner</option> -->
+              <!-- <option value="lasts_5_days">Lasts 5 days</option> -->
+            <!-- </select> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- Submit Button -->
+       <!-- <div class="flex justify-center mt-10"> -->
+        <!-- <button type="submit" class="w-full max-w-2xl bg-green-400 hover:bg-green-500 text-gray-900 font-semibold py-4 px-8 rounded-xl border border-gray-500 shadow-md transition duration-300 text-xl"> -->
+          <!-- Find Recipes! -->
+        <!-- </button> -->
+      <!-- </div> -->
+    <!-- </form> -->
+  <!-- </div> -->
+<!-- </div>  -->
+
+
+<div class="flex min-h-screen flex-wrap -mx-3 items-center pt-6 sm:justify-center sm:pt-0">
+    <div class="w-full overflow-hidden bg-white p-8 shadow-sm dark:bg-gray-800 sm:max-w-5xl sm:rounded-lg mx-8 items-center">
+      <h1 class="block text-m font-medium text-gray-800 dark:text-gray-400">What are you looking for today?</h1>
+      <form action="/recommend" method="GET" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="space-y-8">
+          <div class="text-center">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400">Rating Range</label>
+            <div class="flex justify-center space-x-8">
+              <input type="number" name="rating_min" placeholder="Min" min="0" max="5" step="0.1" class="w-24 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <input type="number" name="rating_max" placeholder="Max" min="0" max="5" step="0.1" class="w-24 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div> 
+          <div class="text-center">
+            <label class="block text-m font-medium text-gray-800 dark:text-gray-400 ">Date Range</label>
+            <div class="flex justify-center space-x-8">
+              <input type="date" name="months_min" class="w-24 h-12 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs">
+              <input type="date" name="months_max" class="w-24 h-12 p-2 rounded-lg bg-gray-300 border border-gray-500 text-center placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs">
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+          <div class="w-full max-w-xs">
+            <label for="tags" class="block text-xl font-serif text-gray-800 mb-2 text-center">Tags</label>
+            <select name="tag" id="tags" class="w-full p-3 rounded-lg bg-gray-300 border border-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-center">
+              <option value="" disabled selected>Select a tag ▼</option> 
+              Ideally populated from backend
+              <option value="quick">Quick to make</option>
+              <option value="dinner">Dinner</option>
+              <option value="lasts_5_days">Lasts 5 days</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-10">
+        <button type="submit" class="w-full max-w-xl bg-green-400 hover:bg-green-500 text-gray-900 font-semibold py-4 px-8 rounded-xl border border-gray-500 shadow-md transition duration-300 text-xl">
+          Find Recipes!
+        </button>
+      </div>
+      </form>
+  </div>
 </div>
 {% endblock %}
